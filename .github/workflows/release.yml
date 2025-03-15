@@ -20,6 +20,7 @@ jobs:
         types:
           - skeleton
           - amd64
+          - arm64
     outputs:
       git-tag: ${{ steps.describe.outputs.git_describe }}
     steps:
