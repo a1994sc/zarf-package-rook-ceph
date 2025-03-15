@@ -31,7 +31,7 @@ jobs:
         uses: defenseunicorns/setup-zarf@10e539efed02f75ec39eb8823e22a5c795f492ae # v1.0.1
 
       - name: Install Cosign
-        if: ${{ github.event_name != 'pull_request' }}
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
         uses: sigstore/cosign-installer@d7d6bc7722e3daa8354c50bcb52f4837da5e9b6a # v3.8.1
 
       - name: Login to GitHub Container Registry
