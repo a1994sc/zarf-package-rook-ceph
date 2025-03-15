@@ -1,0 +1,31 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/zarf-dev/zarf/main/zarf.schema.json
+kind: ZarfPackageConfig
+metadata:
+  name: zarf-package-rook-ceph-cluster
+components:
+  - name: cluster
+    charts:
+      - name: rook-ceph-cluster
+        namespace: rook-ceph
+        releaseName: rook-ceph-cluster
+        url: oci://ghcr.io/onedr0p/charts-mirror/rook-ceph-cluster
+        version: v1.16.5 # renovate: datasource=helm depName=rook-ceph repository=https://charts.rook.io/release
+        valuesFiles:
+          - value.yml
+    images:
+      - ghcr.io/onedr0p/charts-mirror/rook-ceph-cluster:v1.16.5
+      - quay.io/ceph/ceph:v19.2.1
+  - name: cluster-seed
+    charts:
+      - name: rook-ceph-cluster
+        namespace: rook-ceph
+        releaseName: rook-ceph-cluster
+        url: oci://ghcr.io/onedr0p/charts-mirror/rook-ceph-cluster
+        version: v1.16.5 # renovate: datasource=helm depName=rook-ceph repository=https://charts.rook.io/release
+        valuesFiles:
+          - value.yml
+          - seed.yml
+    images:
+      - ghcr.io/onedr0p/charts-mirror/rook-ceph-cluster:v1.16.5
+      - quay.io/ceph/ceph:v19.2.1
