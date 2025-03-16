@@ -25,6 +25,5 @@ jobs:
         with:
           packages: ${{ github.event.repository.name }}
           delete-tags: ${{ steps.prune-tags.outputs.delete_tags }}
-          dry-run: true
           validate: true
           token: ${{ secrets.GITHUB_TOKEN }}
