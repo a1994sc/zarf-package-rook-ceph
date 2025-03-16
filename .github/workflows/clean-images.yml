@@ -1,9 +1,9 @@
 ---
 name: Daily Image Cleanup
 on:
-  # every day at 01:30am
-  schedule:
-    - cron: '30 1 * * *'
+  # # every day at 01:30am
+  # schedule:
+  #   - cron: '30 1 * * *'
   # or manually
   workflow_dispatch:
 jobs:
@@ -18,10 +18,11 @@ jobs:
           package-name: ${{ github.event.repository.name }}
           package-type: container
           min-versions-to-keep: 5
-          ignore-versions: '^([0-9]\\d*)\\.([0-9]\\d*)\\.([0-9]\\d*)$'
+          ignore-versions: '^[\d]+\.[\d]+\.[\d]+$'
 
       - uses: dataaxiom/ghcr-cleanup-action@cd0cdb900b5dbf3a6f2cc869f0dbb0b8211f50c4 # v1.0.16
         with:
           packages: ${{ github.event.repository.name }}
           delete-untagged: true
           delete-orphaned-images: true
+          dry-run: true
