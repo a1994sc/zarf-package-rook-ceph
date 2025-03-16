@@ -10,7 +10,7 @@ runs:
   steps:
     - id: determine-version
       run: |
-        if [ "${{ inputs.version }}" != "latest" ]; then
+        if [ "${{ inputs.version }}" == "latest" ]; then
           echo "version=$(gh api repos/zarf-dev/zarf/tags | yq -p=j -o=y .[0].name)" >> "$GITHUB_OUTPUT"
         else
           echo "version=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
