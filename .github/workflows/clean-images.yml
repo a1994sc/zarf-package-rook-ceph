@@ -1,9 +1,9 @@
 ---
 name: Daily Image Cleanup
 on:
-  # # every day at 01:30am
-  # schedule:
-  #   - cron: '30 1 * * *'
+  # every day at 01:30am
+  schedule:
+    - cron: '30 1 * * *'
   # or manually
   workflow_dispatch:
 jobs:
@@ -13,18 +13,13 @@ jobs:
     permissions:
       packages: write
     steps:
-      - name: Install oras
-        uses: oras-project/setup-oras@5c0b487ce3fe0ce3ab0d034e63669e426e294e4d # v1.2.2
-
-      - name: Discover old tags
-        run: |-
-          echo "delete_tags=$(oras repo tags ghcr.io/${{ github.repository }} | grep -Ei '[a-z0-9]{8}$' | head -n -3 | tr '\n' , | sed 's/,$//')"
-        id: prune-tags
-
       - name: Delete old tags
         uses: dataaxiom/ghcr-cleanup-action@cd0cdb900b5dbf3a6f2cc869f0dbb0b8211f50c4 # v1.0.16
         with:
           packages: '${{ github.event.repository.name }}'
+          # The hash suffix is "-g" + an unambiguous abbreviation for the tip commit of parent
+          # https://git-scm.com/docs/git-describe#_examples
+          # TL;DR this will only hit the non-tagged versions
           tags: '*-g*'
           keep-n-tagged: 3
           token: '${{ secrets.GITHUB_TOKEN }}'
