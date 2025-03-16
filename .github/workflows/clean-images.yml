@@ -18,7 +18,7 @@ jobs:
 
       - name: Discover old tags
         run: |-
-          echo "delete_tags=$(oras repo tags ghcr.io/${{ github.repository }} | grep -Ei '[a-z0-9]{8}$' | head -n -3 | tr , '\n')"
+          echo "delete_tags=$(oras repo tags ghcr.io/${{ github.repository }} | grep -Ei '[a-z0-9]{8}$' | head -n -3 | tr '\n' , | sed 's/.$//')"
         id: prune-tags
 
       - uses: dataaxiom/ghcr-cleanup-action@cd0cdb900b5dbf3a6f2cc869f0dbb0b8211f50c4 # v1.0.16
