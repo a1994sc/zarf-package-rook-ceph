@@ -1,14 +1,26 @@
 name: install-tools
 description: "Install tools"
-
+inputs:
+  version:
+    default: "latest"
+    description: Version of zarf to install
+    required: false
 runs:
   using: composite
   steps:
+    - id: determine-version
+      run: |
+        if [ "${{ inputs.version }}" != "latest" ]; then
+          echo "version=$(gh api repos/zarf-dev/zarf/tags | yq -p=j -o=y .[0].name)" >> "$GITHUB_OUTPUT"
+        else
+          echo "version=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
+        fi
+      shell: bash
     - run: |
-        curl -LO https://github.com/zarf-dev/zarf/releases/download/v${ZARF_VERSION}/zarf_v${ZARF_VERSION}_Linux_amd64
-        curl -LO https://github.com/zarf-dev/zarf/releases/download/v${ZARF_VERSION}/checksums.txt
-        cat checksums.txt | grep "zarf_v${ZARF_VERSION}_Linux_amd64$" | sha256sum --check
+        curl -LO https://github.com/zarf-dev/zarf/releases/download/${{ steps.determine-version.outputs.version }}/zarf_${{ steps.determine-version.outputs.version }}_Linux_amd64
+        curl -LO https://github.com/zarf-dev/zarf/releases/download/${{ steps.determine-version.outputs.version }}/checksums.txt
+        cat checksums.txt | grep "zarf_${{ steps.determine-version.outputs.version }}_Linux_amd64$" | sha256sum --check
         if [ $? -gt 0 ]; then exit $?; fi
-        mv zarf_v${ZARF_VERSION}_Linux_amd64 /usr/local/bin/zarf
+        mv zarf_${{ steps.determine-version.outputs.version }}_Linux_amd64 /usr/local/bin/zarf
         chmod +x /usr/local/bin/zarf
       shell: bash

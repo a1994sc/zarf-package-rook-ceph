@@ -7,10 +7,6 @@ on:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
 
-env:
-  # renovate: depName=zarf-dev/zarf
-  ZARF_VERSION: 0.49.1
-
 jobs:
   release:
     runs-on: ubuntu-latest
