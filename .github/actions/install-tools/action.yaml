@@ -9,6 +9,8 @@ runs:
   using: composite
   steps:
     - id: determine-version
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: |
         if [ "${{ inputs.version }}" == "latest" ]; then
           echo "version=$(gh api repos/zarf-dev/zarf/tags | yq -p=j -o=y .[0].name)" >> "$GITHUB_OUTPUT"
