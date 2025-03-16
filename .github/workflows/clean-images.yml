@@ -18,7 +18,7 @@ jobs:
           package-name: ${{ github.event.repository.name }}
           package-type: container
           min-versions-to-keep: 5
-          ignore-versions: '^[\d]+\.[\d]+\.[\d]+$'
+          ignore-versions: '^v[\d]+\.[\d]+\.[\d]+$'
 
       - uses: dataaxiom/ghcr-cleanup-action@cd0cdb900b5dbf3a6f2cc869f0dbb0b8211f50c4 # v1.0.16
         with:
