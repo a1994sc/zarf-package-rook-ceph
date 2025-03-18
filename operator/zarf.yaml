@@ -9,13 +9,13 @@ components:
       - name: rook-ceph
         namespace: rook-ceph
         releaseName: rook-ceph
-        url: oci://ghcr.io/onedr0p/charts-mirror/rook-ceph
+        url: oci://ghcr.io/home-operations/charts-mirror/rook-ceph
         version: v1.16.5 # renovate: datasource=helm depName=rook-ceph repository=https://charts.rook.io/release
         valuesFiles:
           - value.yml
     images:
       - docker.io/rook/ceph:v1.16.5
-      - ghcr.io/onedr0p/charts-mirror/rook-ceph:v1.16.5
+      - ghcr.io/home-operations/charts-mirror/rook-ceph:v1.16.5
       - quay.io/cephcsi/cephcsi:v3.13.0
       - quay.io/csiaddons/k8s-sidecar:v0.11.0
       - registry.k8s.io/sig-storage/csi-attacher:v4.8.0
@@ -28,14 +28,14 @@ components:
       - name: rook-ceph
         namespace: rook-ceph
         releaseName: rook-ceph
-        url: oci://ghcr.io/onedr0p/charts-mirror/rook-ceph
+        url: oci://ghcr.io/home-operations/charts-mirror/rook-ceph
         version: v1.16.5 # renovate: datasource=helm depName=rook-ceph repository=https://charts.rook.io/release
         valuesFiles:
           - value.yml
           - seed.yml
     images:
       - docker.io/rook/ceph:v1.16.5
-      - ghcr.io/onedr0p/charts-mirror/rook-ceph:v1.16.5
+      - ghcr.io/home-operations/charts-mirror/rook-ceph:v1.16.5
       - quay.io/cephcsi/cephcsi:v3.13.0
       - quay.io/csiaddons/k8s-sidecar:v0.11.0
       - registry.k8s.io/sig-storage/csi-attacher:v4.8.0
