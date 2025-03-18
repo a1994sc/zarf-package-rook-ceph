@@ -3,6 +3,8 @@
 kind: ZarfPackageConfig
 metadata:
   name: zarf-package-rook-ceph-operator
+x-charts:
+  - ghcr.io/home-operations/charts-mirror/rook-ceph:v1.16.5 # renovate: datasource=helm depName=rook-ceph repository=https://charts.rook.io/release
 components:
   - name: operator
     charts:

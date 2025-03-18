@@ -3,6 +3,8 @@
 kind: ZarfPackageConfig
 metadata:
   name: zarf-package-rook-ceph-cluster
+x-charts:
+  - ghcr.io/home-operations/charts-mirror/rook-ceph-cluster:v1.16.5 # renovate: datasource=helm depName=rook-ceph-cluster repository=https://charts.rook.io/release
 components:
   - name: cluster
     charts:
