@@ -8,6 +8,11 @@
     "@A1994SC"
   ],
   "dependencyDashboard": true,
+  "helm-values": {
+    "fileMatch": [
+      "(^|/).+\\.ya?ml(\\.j2)?$"
+    ]
+  },
   "customManagers": [
     {
       "customType": "regex",
