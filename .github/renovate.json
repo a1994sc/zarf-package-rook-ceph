@@ -18,9 +18,9 @@
         "(^|/).+\\.ya?ml$"
       ],
       "matchStrings": [
-        "#\\s*renovate:\\s*datasource=(?<datasource>[^\\s]+)\\s+depName=(?<depName>[^\\s]+)\\s*\\n\\s*version:\\s*(?<currentValue>)"
+        "renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s\\S+?:\\S+\\s+\\S+:(?<currentValue>\\S+)"
       ],
-      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     }
   ]
 }
