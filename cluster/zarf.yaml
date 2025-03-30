@@ -4,7 +4,7 @@ kind: ZarfPackageConfig
 metadata:
   name: zarf-package-rook-ceph-cluster
 x-charts:
-  # renovate: datasource=helm depName=quay.io/rook/rook-ceph-cluster
+  # renovate: datasource=docker depName=quay.io/rook/rook-ceph-cluster
   - quay.io/rook/rook-ceph-cluster:v1.16.6
 components:
   - name: cluster
@@ -13,7 +13,7 @@ components:
         namespace: rook-ceph
         releaseName: rook-ceph-cluster
         url: oci://quay.io/rook/rook-ceph-cluster
-        # renovate: datasource=helm depName=quay.io/rook/rook-ceph-cluster
+        # renovate: datasource=docker depName=quay.io/rook/rook-ceph-cluster
         version: v1.16.6
         valuesFiles:
           - value.yml
@@ -26,7 +26,7 @@ components:
         namespace: rook-ceph
         releaseName: rook-ceph-cluster
         url: oci://quay.io/rook/rook-ceph-cluster
-        # renovate: datasource=helm depName=quay.io/rook/rook-ceph-cluster
+        # renovate: datasource=docker depName=quay.io/rook/rook-ceph-cluster
         version: v1.16.6
         valuesFiles:
           - value.yml
