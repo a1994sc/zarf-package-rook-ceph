@@ -18,8 +18,7 @@
         "(^|/).+\\.ya?ml$"
       ],
       "matchStrings": [
-        "(?m:# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( repository=(?<registryUrl>\\S+))?\\n.+?: ?\"?.*(?<currentValue>\\S+?)\"?$)",
-        "(?m:# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.+?\/(?<currentValue>(v|\\d)[^\/]+)\\S+$)"
+        "#\\s*renovate:\\s*datasource=(?<datasource>[^\\s]+)\\s+depName=(?<depName>[^\\s]+)\\s+repository=(?<registryUrl>[^\\s]+)\\s*\\n\\s*version:\\s*\"(?<currentValue>[^\"]+)"
       ],
       "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
     }
