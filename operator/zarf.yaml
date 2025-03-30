@@ -4,7 +4,8 @@ kind: ZarfPackageConfig
 metadata:
   name: zarf-package-rook-ceph-operator
 x-charts:
-  - quay.io/rook/rook-ceph:v1.16.6 # renovate: datasource=helm depName=rook-ceph repository=https://charts.rook.io/release
+  # renovate: datasource=docker depName=quay.io/rook/rook-ceph
+  - quay.io/rook/rook-ceph:v1.16.6
 components:
   - name: operator
     charts:
@@ -12,7 +13,8 @@ components:
         namespace: rook-ceph
         releaseName: rook-ceph
         url: oci://quay.io/rook/rook-ceph
-        version: v1.16.6 # renovate: datasource=helm depName=rook-ceph repository=https://charts.rook.io/release
+        # renovate: datasource=docker depName=quay.io/rook/rook-ceph
+        version: v1.16.6
         valuesFiles:
           - value.yml
     images:
@@ -31,7 +33,8 @@ components:
         namespace: rook-ceph
         releaseName: rook-ceph
         url: oci://quay.io/rook/rook-ceph
-        version: v1.16.6 # renovate: datasource=helm depName=rook-ceph repository=https://charts.rook.io/release
+        # renovate: datasource=docker depName=quay.io/rook/rook-ceph
+        version: v1.16.6
         valuesFiles:
           - value.yml
           - seed.yml
