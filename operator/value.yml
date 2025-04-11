@@ -1,6 +1,6 @@
 ---
 image:
-  repository: docker.io/rook/ceph
+  repository: ghcr.io/rook/ceph
 resources:
   limits:
     cpu: null
