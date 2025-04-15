@@ -1,9 +1,9 @@
 ---
 name: Populate Renovate resources
 on:
-  push:
+  pull_request:
     branches:
-      - "renovate/**"
+      - main
 permissions:
   contents: write
   id-token: write # needed for keyless signing
