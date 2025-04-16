@@ -7,6 +7,21 @@
   "assignees": [
     "@A1994SC"
   ],
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "addLabels": [
+        "renovate/go"
+      ],
+      "groupName": "all dependencies",
+      "groupSlug": "all-docker",
+      "matchPackageNames": [
+        "*"
+      ]
+    }
+  ],
   "dependencyDashboard": true,
   "customManagers": [
     {
