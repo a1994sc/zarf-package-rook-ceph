@@ -18,8 +18,8 @@ components:
         valuesFiles:
           - value.yml
     images:
-      - ghcr.io/rook/rook-ceph-cluster:v1.16.6
-      - quay.io/ceph/ceph:v19.2.1
+      - ghcr.io/rook/rook-ceph-cluster:v1.17.0
+      - quay.io/ceph/ceph:v19.2.2
   - name: cluster-seed
     charts:
       - name: rook-ceph-cluster
@@ -32,5 +32,5 @@ components:
           - value.yml
           - seed.yml
     images:
-      - ghcr.io/rook/rook-ceph-cluster:v1.16.6
-      - quay.io/ceph/ceph:v19.2.1
+      - ghcr.io/rook/rook-ceph-cluster:v1.17.0
+      - quay.io/ceph/ceph:v19.2.2
