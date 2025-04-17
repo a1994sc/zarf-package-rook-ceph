@@ -33,7 +33,7 @@
         "(^|/).+\\.ya?ml$"
       ],
       "matchStrings": [
-        "(?m:renovate: datasource=(?<datasource>.+) depName=(?<depName>\\S+)\\n\\s+(version: |.+:)(?<currentValue>(.+))$)"
+        "(?m:renovate: datasource=(?<datasource>.+) depName=(?<depName>\\S+)\\n\\s+(version: |tag: |-.+:)(?<currentValue>(.+))$)"
       ],
       "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
     }
