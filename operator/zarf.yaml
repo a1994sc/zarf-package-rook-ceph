@@ -18,8 +18,8 @@ components:
         valuesFiles:
           - value.yml
     images:
-      - ghcr.io/rook/ceph:v1.17.0
-      - ghcr.io/rook/rook-ceph:v1.17.0
+      - ghcr.io/rook/ceph:v1.17.1
+      - ghcr.io/rook/rook-ceph:v1.17.1
       - quay.io/cephcsi/cephcsi:v3.14.0
       - quay.io/csiaddons/k8s-sidecar:v0.12.0
       - registry.k8s.io/sig-storage/csi-attacher:v4.8.0
@@ -39,8 +39,8 @@ components:
           - value.yml
           - seed.yml
     images:
-      - ghcr.io/rook/ceph:v1.17.0
-      - ghcr.io/rook/rook-ceph:v1.17.0
+      - ghcr.io/rook/ceph:v1.17.1
+      - ghcr.io/rook/rook-ceph:v1.17.1
       - quay.io/cephcsi/cephcsi:v3.14.0
       - quay.io/csiaddons/k8s-sidecar:v0.12.0
       - registry.k8s.io/sig-storage/csi-attacher:v4.8.0
