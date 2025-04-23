@@ -13,7 +13,3 @@ csi:
     repository: "###ZARF_REGISTRY###/sig-storage/csi-resizer"
 image:
   repository: "###ZARF_REGISTRY###/rook/ceph"
-  # added this because of bug in chart:
-  #   https://github.com/rook/rook/issues/15743
-  # renovate: datasource=docker depName=ghcr.io/rook/rook-ceph
-  tag: v1.17.0

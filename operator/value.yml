@@ -1,10 +1,6 @@
 ---
 image:
   repository: ghcr.io/rook/ceph
-  # added this because of bug in chart:
-  #   https://github.com/rook/rook/issues/15743
-  # renovate: datasource=docker depName=ghcr.io/rook/rook-ceph
-  tag: v1.17.0
 resources:
   limits:
     cpu: null
