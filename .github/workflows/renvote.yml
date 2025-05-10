@@ -27,14 +27,15 @@ jobs:
       - name: Update checksum
         env:
           GH_TOKEN: ${{ github.token }}
+        if: ${{ !startsWith(github.ref, 'refs/heads/renovate/') }}
         run: |-
           ./.github/hack/zarf.sh
 
-          # git push if we have a diff
-          if [[ `git status --porcelain=1 | wc -l` -ne 0 ]]; then
-            git add .
-            git config --global user.email "<29139614+renovate[bot]@users.noreply.github.com>"
-            git config --global user.name "renovate[bot]"
-            git commit -am "chore(resources): updated resources files"
-            git push origin HEAD:${{ github.head_ref }}
-          fi
+      - name: Commit & Push changes
+        uses: actions-js/push@5a7cbd780d82c0c937b5977586e641b2fd94acc5 # v1.5
+        with:
+          branch: ${{ github.head_ref }}
+          message: "chore(resources): updated resources files"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          author_name: renovate[bot]
+          author_email: <29139614+renovate[bot]@users.noreply.github.com>
