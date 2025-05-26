@@ -12,7 +12,7 @@
       "matchDatasources": [
         "github-actions"
       ],
-      "matchPackagePatterns": [
+      "matchPackageNames": [
         "*"
       ],
       "enabled": false
