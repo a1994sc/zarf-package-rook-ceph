@@ -12,6 +12,9 @@
       "matchDatasources": [
         "github-actions"
       ],
+      "matchPackagePatterns": [
+        "*"
+      ],
       "enabled": false
     },
     {
