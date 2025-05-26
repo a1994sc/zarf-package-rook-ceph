@@ -12,9 +12,6 @@
       "matchDatasources": [
         "github-actions"
       ],
-      "matchPackagePatterns": [
-        "actions/checkout"
-      ],
       "enabled": false
     },
     {
