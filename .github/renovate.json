@@ -38,8 +38,8 @@
       "description": [
         "Process custom dependencies"
       ],
-      "fileMatch": [
-        "(^|/).+\\.ya?ml$"
+      "managerFilePatterns": [
+        "/(^|/).+\\.ya?ml$/"
       ],
       "matchStrings": [
         "(?m:renovate: datasource=(?<datasource>.+) depName=(?<depName>\\S+)\\n\\s+(version: |tag: |-.+:)(?<currentValue>(.+))$)"
