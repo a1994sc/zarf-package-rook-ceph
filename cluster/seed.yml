@@ -1,6 +1,0 @@
----
-cephClusterSpec:
-  cephVersion:
-    image: "###ZARF_REGISTRY###/ceph/ceph:v19.2.1"
-toolbox:
-  image: "###ZARF_REGISTRY###/ceph/ceph:v19.2.1"

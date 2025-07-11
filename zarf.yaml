@@ -9,19 +9,50 @@ metadata:
     org.opencontainers.image.source: "https://github.com/a1994sc/zarf-package-rook-ceph"
     org.opencontainers.image.description: Zarf package for deploying rook-ceph
 components:
-  - name: operator-seed
-    required: false
-    import:
-      path: ./operator
-  - name: cluster-seed
-    required: false
-    import:
-      path: ./cluster
   - name: operator
     required: true
+    only:
+      flavor: upstream
+    charts:
+      - name: rook-ceph
+        valuesFiles:
+          - values/upstream-operator.yml
     import:
       path: ./operator
+      name: operator
+
   - name: cluster
     required: true
+    only:
+      flavor: upstream
+    charts:
+      - name: rook-ceph-cluster
+        valuesFiles:
+          - values/upstream-cluster.yml
     import:
       path: ./cluster
+      name: cluster
+
+  - name: operator-seed
+    required: false
+    only:
+      flavor: upstream
+    charts:
+      - name: rook-ceph
+        valuesFiles:
+          - values/upstream-operator-seed.yml
+    import:
+      path: ./operator
+      name: operator
+
+  - name: cluster-seed
+    required: false
+    only:
+      flavor: upstream
+    charts:
+      - name: rook-ceph-cluster
+        valuesFiles:
+          - values/upstream-cluster-seed.yml
+    import:
+      path: ./cluster
+      name: cluster
