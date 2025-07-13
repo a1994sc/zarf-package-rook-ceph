@@ -3,9 +3,6 @@
 kind: ZarfPackageConfig
 metadata:
   name: zarf-package-rook-ceph-cluster
-x-charts:
-  # renovate: datasource=docker depName=ghcr.io/rook/rook-ceph-cluster
-  - ghcr.io/rook/rook-ceph-cluster:v1.17.6
 components:
   - name: cluster
     charts:
@@ -16,21 +13,4 @@ components:
         # renovate: datasource=docker depName=ghcr.io/rook/rook-ceph-cluster
         version: v1.17.6
         valuesFiles:
-          - value.yml
-    images:
-      - ghcr.io/rook/rook-ceph-cluster:v1.17.6
-      - quay.io/ceph/ceph:v19.2.2
-  - name: cluster-seed
-    charts:
-      - name: rook-ceph-cluster
-        namespace: rook-ceph
-        releaseName: rook-ceph-cluster
-        url: oci://ghcr.io/rook/rook-ceph-cluster
-        # renovate: datasource=docker depName=ghcr.io/rook/rook-ceph-cluster
-        version: v1.17.6
-        valuesFiles:
-          - value.yml
-          - seed.yml
-    images:
-      - ghcr.io/rook/rook-ceph-cluster:v1.17.6
-      - quay.io/ceph/ceph:v19.2.2
+          - ../values/base-cluster.yml

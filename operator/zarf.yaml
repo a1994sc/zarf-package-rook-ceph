@@ -3,9 +3,6 @@
 kind: ZarfPackageConfig
 metadata:
   name: zarf-package-rook-ceph-operator
-x-charts:
-  # renovate: datasource=docker depName=ghcr.io/rook/rook-ceph
-  - ghcr.io/rook/rook-ceph:v1.17.6
 components:
   - name: operator
     charts:
@@ -16,35 +13,4 @@ components:
         # renovate: datasource=docker depName=ghcr.io/rook/rook-ceph
         version: v1.17.6
         valuesFiles:
-          - value.yml
-    images:
-      - ghcr.io/rook/ceph:v1.17.6
-      - ghcr.io/rook/rook-ceph:v1.17.6
-      - quay.io/cephcsi/cephcsi:v3.14.1
-      - quay.io/csiaddons/k8s-sidecar:v0.12.0
-      - registry.k8s.io/sig-storage/csi-attacher:v4.8.1
-      - registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.13.0
-      - registry.k8s.io/sig-storage/csi-provisioner:v5.2.0
-      - registry.k8s.io/sig-storage/csi-resizer:v1.13.2
-      - registry.k8s.io/sig-storage/csi-snapshotter:v8.2.1
-  - name: operator-seed
-    charts:
-      - name: rook-ceph
-        namespace: rook-ceph
-        releaseName: rook-ceph
-        url: oci://ghcr.io/rook/rook-ceph
-        # renovate: datasource=docker depName=ghcr.io/rook/rook-ceph
-        version: v1.17.6
-        valuesFiles:
-          - value.yml
-          - seed.yml
-    images:
-      - ghcr.io/rook/ceph:v1.17.6
-      - ghcr.io/rook/rook-ceph:v1.17.6
-      - quay.io/cephcsi/cephcsi:v3.14.1
-      - quay.io/csiaddons/k8s-sidecar:v0.12.0
-      - registry.k8s.io/sig-storage/csi-attacher:v4.8.1
-      - registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.13.0
-      - registry.k8s.io/sig-storage/csi-provisioner:v5.2.0
-      - registry.k8s.io/sig-storage/csi-resizer:v1.13.2
-      - registry.k8s.io/sig-storage/csi-snapshotter:v8.2.1
+          - ../values/base-operator.yml

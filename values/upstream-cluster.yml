@@ -1,0 +1,6 @@
+---
+cephClusterSpec:
+  cephVersion:
+    image: quay.io/ceph/ceph:v19.2.2
+toolbox:
+  image: quay.io/ceph/ceph:v19.2.2
