@@ -49,7 +49,7 @@
       ],
       versioningTemplate: "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$",
       matchStrings: [
-        "(?m:renovate-ceph\\n\\s+.+:(?<currentValue>([^\\s].+[^\"])))"
+        "(?m:renovate-ceph\\n\\s+.+:(?<currentValue>(v[0-9\\.])))"
       ],
       depNameTemplate: "quay.io/ceph/ceph"
     },
