@@ -48,7 +48,7 @@
         "/(^|/).+\\.ya?ml(\\.j2)?$/"
       ],
       matchStrings: [
-        "(?m:renovate: datasource=(?<datasource>.+)\\n\\s+.+:(?<currentValue>(.+))$)"
+        "(?m:renovate: datasource=(?<datasource>.+)\\n\\s+.+:(?<currentValue>([^\\s].+))$)"
       ],
       depNameTemplate: "quay.io/ceph/ceph"
     },
