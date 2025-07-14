@@ -10,8 +10,7 @@
   packageRules: [
     {
       matchDatasources: [
-        "docker",
-        "custom.ceph"
+        "regex"
       ],
       addLabels: [
         "renovate/oci"
@@ -38,9 +37,19 @@
         "/(^|/).+\\.ya?ml(\\.j2)?$/"
       ],
       matchStrings: [
-        "(?m:renovate: datasource=(?<datasource>.+)( depName=(?<depName>\\S+))?\\n\\s+(version: |tag: |-.+:)(?<currentValue>(.+))$)"
+        "(?m:renovate: datasource=(?<datasource>.+) depName=(?<depName>\\S+)\\n\\s+(version: |tag: |-.+:)(?<currentValue>(.+))$)"
       ],
       datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
+    },
+    {
+      customType: "regex",
+      datasourceTemplate: "custom.ceph",
+      managerFilePatterns: [
+        "/(^|/).+\\.ya?ml(\\.j2)?$/"
+      ],
+      matchStrings: [
+        "(?m:renovate: datasource=(?<datasource>.+)\\n\\s+.+:(?<currentValue>(.+))$)"
+      ],
     },
     {
       customType: "regex",
