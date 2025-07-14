@@ -45,10 +45,10 @@
       customType: "regex",
       datasourceTemplate: "custom.ceph",
       managerFilePatterns: [
-        "/(^|/).+\\.ya?ml(\\.j2)?$/"
+        "/^values/.+\\.ya?ml(\\.j2)?$/"
       ],
       matchStrings: [
-        "(?m:renovate: datasource=(?<datasource>.+)\\n\\s+.+:(?<currentValue>([^\\s].+))$)"
+        "(?m:renovate-ceph\\n\\s+.+:(?<currentValue>([^\\s].+))$)"
       ],
       depNameTemplate: "quay.io/ceph/ceph"
     },

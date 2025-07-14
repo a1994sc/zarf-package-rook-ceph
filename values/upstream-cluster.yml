@@ -1,8 +1,8 @@
 ---
 cephClusterSpec:
   cephVersion:
-    # renovate: datasource=custom.ceph
+    # renovate-ceph
     image: quay.io/ceph/ceph:v19.2.0
 toolbox:
-  # renovate: datasource=custom.ceph
+  # renovate-ceph
   image: quay.io/ceph/ceph:v19.2.0
