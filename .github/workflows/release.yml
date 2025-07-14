@@ -18,7 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         types:
-          - skeleton
+          # - skeleton
           - amd64
           - arm64
         flavor:
@@ -51,16 +51,16 @@ jobs:
           sed -i -E 's/(^ +version: )v0.0.0$/\1${{ steps.describe.outputs.git_describe }}/1' zarf.yaml
 
       - name: Package Zarf package
-        if: ${{ matrix.types != 'skeleton' }}
+        # if: ${{ matrix.types != 'skeleton' }}
         run: |-
           zarf package create --confirm . --architecture ${{ matrix.types }} --flavor ${{ matrix.flavor }}
 
       - name: Publish Zarf package
-        if: ${{ matrix.types != 'skeleton' }}
+        # if: ${{ matrix.types != 'skeleton' }}
         run: |-
           zarf package publish zarf-*.zst oci://ghcr.io/${{ github.repository_owner }}/zarf
 
-      - name: Publish Zarf package, skeleton
-        if: ${{ matrix.types == 'skeleton' }}
-        run: |-
-          zarf package publish . oci://ghcr.io/${{ github.repository_owner }}/zarf
+      # - name: Publish Zarf package, skeleton
+      #   if: ${{ matrix.types == 'skeleton' }}
+      #   run: |-
+      #     zarf package publish . oci://ghcr.io/${{ github.repository_owner }}/zarf
