@@ -50,6 +50,7 @@
       matchStrings: [
         "(?m:renovate: datasource=(?<datasource>.+)\\n\\s+.+:(?<currentValue>(.+))$)"
       ],
+      depNameTemplate: "quay.io/ceph/ceph"
     },
     {
       customType: "regex",
