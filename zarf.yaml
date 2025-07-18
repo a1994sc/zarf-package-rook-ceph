@@ -14,52 +14,53 @@ x-charts:
   operator:
     - ghcr.io/rook/rook-ceph:v1.17.6
 components:
-  - name: operator
-    required: true
+  - name: operator-images
+    required: false
     only:
       flavor: upstream
+    images:
+      - ghcr.io/rook/ceph:v1.17.6
+      - ghcr.io/rook/rook-ceph:v1.17.6
+      - quay.io/cephcsi/cephcsi:v3.14.1
+      - quay.io/csiaddons/k8s-sidecar:v0.12.0
+      - registry.k8s.io/sig-storage/csi-attacher:v4.8.1
+      - registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.13.0
+      - registry.k8s.io/sig-storage/csi-provisioner:v5.2.0
+      - registry.k8s.io/sig-storage/csi-resizer:v1.13.2
+      - registry.k8s.io/sig-storage/csi-snapshotter:v8.2.1
+  - name: operator-chart
+    required: false
+    only:
+      flavor: upstream
+    import:
+      path: ./operator
+      name: operator-chart
     charts:
       - name: rook-ceph
         valuesFiles:
           - values/upstream-operator.yml
-    import:
-      path: ./operator
-      name: operator
-    images:
-      - ghcr.io/rook/ceph:v1.17.6
-      - ghcr.io/rook/rook-ceph:v1.17.6
-      - quay.io/cephcsi/cephcsi:v3.14.1
-      - quay.io/csiaddons/k8s-sidecar:v0.12.0
-      - registry.k8s.io/sig-storage/csi-attacher:v4.8.1
-      - registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.13.0
-      - registry.k8s.io/sig-storage/csi-provisioner:v5.2.0
-      - registry.k8s.io/sig-storage/csi-resizer:v1.13.2
-      - registry.k8s.io/sig-storage/csi-snapshotter:v8.2.1
-  - name: cluster
-    required: true
+  - name: cluster-images
+    required: false
     only:
       flavor: upstream
+    images:
+      - ghcr.io/rook/rook-ceph-cluster:v1.17.6
+      - quay.io/ceph/ceph:v19.2.2
+  - name: cluster-chart
+    required: false
+    only:
+      flavor: upstream
+    import:
+      path: ./cluster
+      name: cluster-chart
     charts:
       - name: rook-ceph-cluster
         valuesFiles:
           - values/upstream-cluster.yml
-    import:
-      path: ./cluster
-      name: cluster
-    images:
-      - ghcr.io/rook/rook-ceph-cluster:v1.17.6
-      - quay.io/ceph/ceph:v19.2.2
-  - name: operator-seed
+  - name: operator-seed-images
     required: false
     only:
       flavor: upstream
-    charts:
-      - name: rook-ceph
-        valuesFiles:
-          - values/upstream-operator-seed.yml
-    import:
-      path: ./operator
-      name: operator
     images:
       - ghcr.io/rook/ceph:v1.17.6
       - ghcr.io/rook/rook-ceph:v1.17.6
@@ -70,17 +71,28 @@ components:
       - registry.k8s.io/sig-storage/csi-provisioner:v5.2.0
       - registry.k8s.io/sig-storage/csi-resizer:v1.13.2
       - registry.k8s.io/sig-storage/csi-snapshotter:v8.2.1
-  - name: cluster-seed
+  - name: operator-seed-chart
+    required: false
+    import:
+      path: ./operator
+      name: operator-chart
+    charts:
+      - name: rook-ceph
+        valuesFiles:
+          - values/upstream-operator-seed.yml
+  - name: cluster-seed-images
     required: false
     only:
       flavor: upstream
+    images:
+      - ghcr.io/rook/rook-ceph-cluster:v1.17.6
+      - quay.io/ceph/ceph:v19.2.2
+  - name: cluster-seed-chart
+    required: false
+    import:
+      path: ./cluster
+      name: cluster-chart
     charts:
       - name: rook-ceph-cluster
         valuesFiles:
           - values/upstream-cluster-seed.yml
-    import:
-      path: ./cluster
-      name: cluster
-    images:
-      - ghcr.io/rook/rook-ceph-cluster:v1.17.6
-      - quay.io/ceph/ceph:v19.2.2

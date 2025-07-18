@@ -4,7 +4,7 @@ kind: ZarfPackageConfig
 metadata:
   name: zarf-package-rook-ceph-cluster
 components:
-  - name: cluster
+  - name: cluster-chart
     charts:
       - name: rook-ceph-cluster
         namespace: rook-ceph

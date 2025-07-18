@@ -4,7 +4,7 @@ kind: ZarfPackageConfig
 metadata:
   name: zarf-package-rook-ceph-operator
 components:
-  - name: operator
+  - name: operator-chart
     charts:
       - name: rook-ceph
         namespace: rook-ceph
