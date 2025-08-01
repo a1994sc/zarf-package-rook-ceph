@@ -34,7 +34,7 @@ components:
       flavor: upstream
     images:
       - ghcr.io/rook/rook-ceph-cluster:v1.17.6
-      - quay.io/ceph/ceph:v19.2.2
+      - quay.io/ceph/ceph:v19.2.3
   - name: operator-chart
     required: false
     only:
