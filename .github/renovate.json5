@@ -10,7 +10,9 @@
   packageRules: [
     {
       matchDatasources: [
-        "regex"
+        "regex",
+        "docker",
+        "github-releases",
       ],
       addLabels: [
         "renovate/oci"
