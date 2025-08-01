@@ -12,6 +12,7 @@
       matchDatasources: [
         "regex",
         "docker",
+        "github-tags", 
         "github-releases",
       ],
       addLabels: [
