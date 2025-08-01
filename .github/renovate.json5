@@ -12,6 +12,7 @@
       matchDatasources: [
         "regex",
         "docker",
+        "git-tags", 
         "github-tags", 
         "github-releases",
       ],
